@@ -43,8 +43,6 @@
 					new BrainSocketPubSub()
 			);
 
-			console.log($BrainSocket.connection);
-
 			$BrainSocket.event.listen('generic.event',function(msg){
 				console.log(msg);
 				if(msg.data.user_id == fake_user_id){
