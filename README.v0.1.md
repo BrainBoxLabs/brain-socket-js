@@ -3,7 +3,7 @@ BrainSocket.js
 
 WebSockets for realtime event-driven js apps.
 
-This js library is a helper class that pairs nicely with the [BrainSocket.php](https://github.com/BrainBoxLabs/brain-socket) laravel package.
+This js library is a helper class that pairs nicely with the [BrainSocket.php](https://github.com/BrainBoxLabs/brain-socket) Laravel package.
 
 Constructing the BrainSocket object:
 
@@ -20,48 +20,55 @@ The class requires 2 parameters to get up an running:
 - The first is the WebSocket object which should point to a WebSocket server.
 - The second is the BrainSocketPubSub class (you can feel free to implement your own just make sure you pass in an object with the `forget`, `listen` and `fire` methods).
 
-**Note:** If you are using our [BrainSocket.php](https://github.com/BrainBoxLabs/brain-socket) package you should see **"Connection Established!"** messages in the terminal window running your WebSocket server.
+**Note:** If you are using our [BrainSocket.php](https://github.com/BrainBoxLabs/brain-socket) package you should see **"Connection Established!"** messages in the terminal window running your WebSocket server when you load your js app in a browser.
 
-Next we can start subscribing to some custom WebSocket events via `Event.listen`.
+Next we can start subscribing to some custom BrainSocket events via `Event.listen`.
 
 ```javascript
-app.BrainSocket.Event.listen('some.event',function(msg){
+app.BrainSocket.Event.listen('some.event',function(msg)
+{
 	console.log(msg);
 });
 
-app.BrainSocket.Event.listen('app.success',function(msg){
+app.BrainSocket.Event.listen('app.success',function(msg)
+{
 	console.log(msg);
 });
 
-app.BrainSocket.Event.listen('app.error',function(msg){
+app.BrainSocket.Event.listen('app.error',function(msg)
+{
 	console.log(msg);
 });
 ```
 
-**Note:** The `msg` parameter passed into the event listener is a generic object that contains `client` and possibly `server` objects (also generic data containers) which contain the original client data and any server data that was passed back from a Laravel Event.
+**Note:** The `msg` parameter passed into the event listener is a generic object that contains `client` and possibly `server` objects (also generic data containers), which contain the original client data and any server data that was passed back from a Laravel Event.
 
 **Note:** The `app.success` and `app.error` events are not required but are helper events for dealing with flash messaging.
 
-To fire an event you can call:
+To fire an event to the WebSocket server you can call:
 
 ```javascript
 app.BrainSocket.message('some.event',[some:data]);
 ```
 
-Typically you would fire these messages after user interactions in your app.
+Typically you would fire these messages after user interactions take place in your app.
 
 Here's an example with jquery:
 
 ```javascript
-$('button.user-signup').click(function(event){
+$('button.user-signup').click(function(event)
+{
 
-	if(something.happens){
-		app.BrainSocket.success(['Congrats, Welcome to the team!']);
-	}else{
-		app.BrainSocket.error(['We\'re sorry, there was an error with your submission.']);
+	if(something.happens)
+	{
+		app.BrainSocket.success('Congrats, Welcome to the team!');
+	}else
+	{
+		app.BrainSocket.error('We\'re sorry, there was an error with your submission.');
 	}
 
 	return false;
+
 });
 ```
 
