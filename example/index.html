@@ -31,7 +31,8 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
 	<script src="js/bootstrap.js"></script>
-	<script src="js/brain-socket.min.js"></script>
+	<script src="../lib/BrainSocketPubSub.js"></script>
+	<script src="../lib/BrainSocket.js"></script>
 	<script type="text/javascript" charset="utf-8">
 		$(function(){
 
@@ -45,10 +46,10 @@
 
 			$BrainSocket.event.listen('generic.event',function(msg){
 				console.log(msg);
-				if(msg.data.user_id == fake_user_id){
-					$('#chat-log').append('<div class="alert alert-success">Me: '+msg.data.message+'</div>');
+				if(msg.client.data.user_id == fake_user_id){
+					$('#chat-log').append('<div class="alert alert-success">Me: '+msg.client.data.message+'</div>');
 				}else{
-					$('#chat-log').append('<div class="alert alert-info">Them: '+msg.data.message+'</div>');
+					$('#chat-log').append('<div class="alert alert-info">Them: '+msg.client.data.message+'</div>');
 				}
 			});
 
