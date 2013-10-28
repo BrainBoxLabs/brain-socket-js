@@ -47,7 +47,7 @@ app.BrainSocket.Event.listen('app.error',function(msg)
 });
 ```
 
-**Note:** The `msg` parameter passed into the event listener is a generic object that contains `client` and possibly `server` objects (also generic data containers), which contain the original client data and any server data that was passed back from a Laravel Event.
+**Note:** The `msg` parameter passed into the event listener is a POJO (Plain Old Javascript Object) that contains `client` and possibly `server` objects (also POJOs), which contain the original client data and any server data that was passed back.
 
 **Note:** The `app.success` and `app.error` events are not required but are helper events for dealing with flash messaging.
 
