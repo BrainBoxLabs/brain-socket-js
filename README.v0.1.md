@@ -5,7 +5,13 @@ WebSockets for realtime event-driven js apps.
 
 This js library is a helper class that pairs nicely with the [BrainSocket.php](https://github.com/BrainBoxLabs/brain-socket) Laravel package.
 
-Constructing the BrainSocket object:
+Load the script into your app:
+
+```html
+<script type="text/javascript" src="js/brain-socket.min.js" />
+```
+
+Create the BrainSocket object:
 
 ```javascript
 window.app = {};
