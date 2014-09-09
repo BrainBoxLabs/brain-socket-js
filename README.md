@@ -57,7 +57,23 @@ To fire an event to the WebSocket server you can call:
 app.BrainSocket.message('some.event',[some:data]);
 ```
 
-Typically you would fire these messages after user interactions take place in your app.
+**Note:** Firing an event before a connection to the websockets server will cause an error. As such, if you want to fire an event as soon as possible after pageload you should use the "onopen" event handler as shown below.
+
+
+```javascript
+app.BrainSocket.onopen(function()
+{
+    // this executes as soon as the connection is established.
+    app.BrainSocket.message('newClient.event',
+        {
+            'message':'register',
+            'user_id':fake_user_id
+        }
+    );
+});
+```
+
+Typically though, you would fire these messages after user interactions take place in your app.
 
 Here's an example with jquery:
 
