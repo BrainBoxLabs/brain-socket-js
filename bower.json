@@ -1,0 +1,22 @@
+{
+  "name": "brain-socket-js",
+  "version": "1.0.0",
+  "homepage": "https://github.com/vlio20/brain-socket-js",
+  "authors": [
+    "Vlad Ioffe <vlio20@gmail.com>"
+  ],
+  "description": "WebSockets for realtime event-driven js apps",
+  "main": "brain-socket.min.js",
+  "keywords": [
+    "laravel",
+    "websocket"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
