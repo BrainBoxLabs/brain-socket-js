@@ -45,6 +45,18 @@ app.BrainSocket.Event.listen('app.error',function(msg)
 {
 	console.log(msg);
 });
+
+app.BrainSocket.Event.listen('showOnline',function(data) {
+	console.log(data);
+});
+
+app.BrainSocket.Event.listen('someone_connected',function(data) {
+	console.log(data);
+});
+
+app.BrainSocket.Event.listen('someone_disconnected',function(data) {
+	console.log(data);
+});
 ```
 
 **Note:** The `msg` parameter passed into the event listener is a POJO (Plain Old Javascript Object) that contains `client` and possibly `server` objects (also POJOs), which contain the original client data and any server data that was passed back.
